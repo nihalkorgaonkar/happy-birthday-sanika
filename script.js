@@ -1,4 +1,5 @@
-const floatingElements = ['❤️', '🪷', '✨', '💖', '💮'];
+// A beautiful mix of lilies, lotuses, cherry blossoms, tulips, and hearts!
+const floatingElements = ['❤️', '🪷', '🌸', '🌷', '🌺', '💖', '✨', '💮'];
 
 function createFloatingElement() {
     const el = document.createElement('div');
