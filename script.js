@@ -1,17 +1,23 @@
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '❤️';
+const floatingElements = ['❤️', '🪷', '✨', '💖', '💮'];
+
+function createFloatingElement() {
+    const el = document.createElement('div');
+    el.classList.add('floating-item');
+    el.innerHTML = floatingElements[Math.floor(Math.random() * floatingElements.length)];
     
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.animationDuration = Math.random() * 3 + 4 + 's';
     
-    document.body.appendChild(heart);
+    // Add some random size variation
+    const size = Math.random() * 1.5 + 1;
+    el.style.fontSize = size + 'rem';
+    
+    document.body.appendChild(el);
     
     setTimeout(() => {
-        heart.remove();
-    }, 5000);
+        el.remove();
+    }, 7000);
 }
 
-// Generate hearts continuously
-setInterval(createHeart, 300);
+// Generate elements continuously
+setInterval(createFloatingElement, 400);
