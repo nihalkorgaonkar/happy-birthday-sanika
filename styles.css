@@ -194,6 +194,10 @@ body {
     padding-right: 10%;
 }
 
+.scattered-photo.photo-center {
+    text-align: center;
+}
+
 .scattered-duo {
     display: flex;
     justify-content: center;
