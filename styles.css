@@ -150,20 +150,9 @@ body {
     font-size: 1.1rem;
 }
 
-.message p {
+.message > p {
     margin-bottom: 22px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
 }
-
-.message p:nth-child(1) { animation-delay: 0.1s; }
-.message p:nth-child(2) { animation-delay: 0.2s; }
-.message p:nth-child(3) { animation-delay: 0.3s; }
-.message p:nth-child(4) { animation-delay: 0.4s; }
-.message p:nth-child(5) { animation-delay: 0.5s; }
-.message p:nth-child(6) { animation-delay: 0.6s; }
-.message p:nth-child(7) { animation-delay: 0.7s; }
 
 .opening {
     font-family: 'Dancing Script', cursive;
@@ -180,9 +169,6 @@ body {
     text-align: center;
     margin: 30px 0;
     border: 2px solid rgba(255, 71, 87, 0.15);
-    animation: fadeInUp 0.8s ease 0.7s forwards;
-    opacity: 0;
-    transform: translateY(20px);
 }
 
 .love-declaration p {
@@ -190,33 +176,30 @@ body {
     color: #ff4757;
     font-size: 1.3rem !important;
     margin-bottom: 8px !important;
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
 }
 
-/* ========== GALLERY SECTION ========== */
-.gallery-section {
-    padding: 60px 20px 80px;
+/* ========== SCATTERED POLAROIDS ========== */
+.scattered-photo {
+    margin: 30px 0;
+    overflow: visible;
 }
 
-.gallery-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    color: #ff4757;
-    text-align: center;
-    margin-bottom: 40px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+.scattered-photo.photo-left {
+    text-align: left;
+    padding-left: 10%;
 }
 
-.gallery {
+.scattered-photo.photo-right {
+    text-align: right;
+    padding-right: 10%;
+}
+
+.scattered-duo {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    max-width: 1100px;
-    margin: 0 auto;
-    perspective: 1000px;
+    gap: 20px;
+    margin: 35px 0;
+    flex-wrap: wrap;
 }
 
 .polaroid {
@@ -226,28 +209,29 @@ body {
     border-radius: 4px;
     transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
+    display: inline-block;
     position: relative;
-    z-index: 10;
-    opacity: 0;
-    animation: popIn 0.6s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards;
 }
 
-.polaroid:nth-child(1) { animation-delay: 0.1s; transform: rotate(-5deg); }
-.polaroid:nth-child(2) { animation-delay: 0.2s; transform: rotate(3deg); }
-.polaroid:nth-child(3) { animation-delay: 0.3s; transform: rotate(-2deg); }
-.polaroid:nth-child(4) { animation-delay: 0.4s; transform: rotate(5deg); }
-.polaroid:nth-child(5) { animation-delay: 0.5s; transform: rotate(-4deg); }
-.polaroid:nth-child(6) { animation-delay: 0.6s; transform: rotate(2deg); }
-.polaroid:nth-child(7) { animation-delay: 0.7s; transform: rotate(-3deg); }
+.photo-left .polaroid {
+    transform: rotate(-5deg);
+}
 
-@keyframes popIn {
-    0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-    100% { opacity: 1; }
+.photo-right .polaroid {
+    transform: rotate(4deg);
+}
+
+.tilt-left {
+    transform: rotate(-6deg);
+}
+
+.tilt-right {
+    transform: rotate(5deg);
 }
 
 .polaroid img {
-    width: 200px;
-    height: 260px;
+    width: 220px;
+    height: 280px;
     object-fit: cover;
     border-radius: 2px;
     transition: filter 0.3s ease;
@@ -256,7 +240,7 @@ body {
 .polaroid-caption {
     text-align: center;
     font-size: 1.2rem;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 
 .polaroid:hover {
@@ -296,29 +280,33 @@ body {
     position: fixed;
     z-index: 1;
     pointer-events: none;
-    animation: floatUp 7s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) translateX(0) scale(0.3) rotate(0deg);
-        opacity: 0;
-    }
-    15% {
-        opacity: 0.85;
-    }
-    50% {
-        transform: translateY(50vh) translateX(30px) scale(1) rotate(15deg);
-        opacity: 0.9;
-    }
-    85% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-80px) translateX(-30px) scale(1.1) rotate(-15deg);
-        opacity: 0;
-    }
+.floating-item.float-anim-1 { animation: floatUp1 6s ease-in-out forwards; }
+.floating-item.float-anim-2 { animation: floatUp2 7s ease-in-out forwards; }
+.floating-item.float-anim-3 { animation: floatUp3 5.5s ease-in-out forwards; }
+
+@keyframes floatUp1 {
+    0% { transform: translateY(100vh) translateX(0) scale(0.3) rotate(0deg); opacity: 0; }
+    12% { opacity: 0.9; }
+    50% { transform: translateY(50vh) translateX(25px) scale(1) rotate(12deg); opacity: 0.85; }
+    100% { transform: translateY(-80px) translateX(-20px) scale(1.1) rotate(-10deg); opacity: 0; }
+}
+
+@keyframes floatUp2 {
+    0% { transform: translateY(100vh) translateX(0) scale(0.4) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.85; }
+    50% { transform: translateY(45vh) translateX(-30px) scale(1.1) rotate(-15deg); opacity: 0.9; }
+    100% { transform: translateY(-80px) translateX(25px) scale(0.9) rotate(12deg); opacity: 0; }
+}
+
+@keyframes floatUp3 {
+    0% { transform: translateY(100vh) translateX(0) scale(0.2) rotate(0deg); opacity: 0; }
+    15% { opacity: 0.95; }
+    40% { transform: translateY(60vh) translateX(15px) scale(1.2) rotate(8deg); }
+    70% { transform: translateY(25vh) translateX(-15px) scale(1) rotate(-8deg); opacity: 0.8; }
+    100% { transform: translateY(-80px) translateX(10px) scale(0.8) rotate(15deg); opacity: 0; }
 }
 
 /* ========== SCROLL ANIMATIONS ========== */
@@ -336,6 +324,12 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Keep tilts when visible */
+.photo-left.slide-up.visible .polaroid { transform: rotate(-5deg); }
+.photo-right.slide-up.visible .polaroid { transform: rotate(4deg); }
+.slide-up.visible .tilt-left { transform: rotate(-6deg); }
+.slide-up.visible .tilt-right { transform: rotate(5deg); }
 
 /* ========== KEYFRAMES ========== */
 @keyframes fadeIn {
@@ -372,15 +366,17 @@ body {
     .opening {
         font-size: 1.5rem !important;
     }
-    .gallery-title {
-        font-size: 2.2rem;
-    }
     .polaroid img {
-        width: 130px;
-        height: 170px;
+        width: 160px;
+        height: 200px;
     }
     .polaroid {
-        padding: 7px 7px 20px 7px;
+        padding: 7px 7px 22px 7px;
+    }
+    .scattered-photo.photo-left,
+    .scattered-photo.photo-right {
+        text-align: center;
+        padding: 0;
     }
     .signature {
         font-size: 2.2rem;
@@ -395,10 +391,10 @@ body {
         font-size: 2.5rem;
     }
     .polaroid img {
-        width: 110px;
-        height: 140px;
+        width: 130px;
+        height: 170px;
     }
-    .gallery {
-        gap: 15px;
+    .scattered-duo {
+        gap: 12px;
     }
 }
